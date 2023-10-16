@@ -4,13 +4,41 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "KLC - Check All",
-      "dependsOn": ["KLC - Check Symbols", "KLC - Check Footprints"],
+      "label": "KLC - Check All GCC",
+      "dependsOn": ["KLC - Check GCC Symbols", "KLC - Check GCC Footprints"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
     {
-      "label": "KLC - Check Symbols",
+      "label": "KLC - Check GCC Symbols",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        ".\\library-utils\\klc-check\\check_symbol.py",
+        ".\\GCC.kicad_sym",
+        "-vv"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "KLC - Check GCC Footprints",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        ".\\library-utils\\klc-check\\check_footprint.py",
+        ".\\GCC.pretty\\*",
+        "-vv"
+      ],
+      "problemMatcher": []
+    },
+        {
+      "label": "KLC - Check All STD",
+      "dependsOn": ["KLC - Check STD Symbols", "KLC - Check STD Footprints"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+    {
+      "label": "KLC - Check STD Symbols",
       "type": "shell",
       "command": "python",
       "args": [
@@ -21,7 +49,7 @@
       "problemMatcher": []
     },
     {
-      "label": "KLC - Check Footprints",
+      "label": "KLC - Check STD Footprints",
       "type": "shell",
       "command": "python",
       "args": [
